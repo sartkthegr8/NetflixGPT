@@ -1,8 +1,9 @@
+import Body from "./component/Body";
 
-import './App.css';
+
 
 function App() {
-  return <div className="text-3xl font-bold text-end">yoho</div>;
+  return <Body/>
 }
 
 export default App;
