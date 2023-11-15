@@ -28,11 +28,11 @@ const Login = () => {
          className='p-2 my-4 w-full bg-gray-500'
         />
 
-        <input
+        {!isSignInForm &&<input
          type='text'
-         placeholder='Email Address' 
+         placeholder='Full Name' 
          className='p-2 my-4 w-full bg-gray-500'
-        />
+        />}
 
         <input 
          type='password'

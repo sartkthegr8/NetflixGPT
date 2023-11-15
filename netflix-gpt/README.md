@@ -6,7 +6,7 @@
 
 #Features
 -Login/Sign_Up
-    -Sign In/Sign Up Form
+    -Sign In/Sign Up Form [use form librry]
     -redirect to Browse Page
 -Browser
    -header
