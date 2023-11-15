@@ -5,7 +5,8 @@ import { checkValidData } from '../utils/validate';
 const Login = () => {
 
     const [isSignInForm , setIsSignInForm] = useState(true);
-
+    const [errorMessage,setErrorMessage] = useState(null)
+    const name = useRef(null);
     const email = useRef(null);
     const password = useRef(null);
     
@@ -15,11 +16,17 @@ const Login = () => {
     }
 
     const handleButtonClick = ()=>{
-          //validate the form data
-          //
+          //validate the form data          
           // console.log(email.current.value);
           // console.log(password.current.value);
-          const message = checkValidData(email.current.value, password.current.value);    }
+
+          const message = checkValidData(name.current.value,email.current.value, password.current.value);
+          setErrorMessage(message);
+          if (message) return ; //if here is error it return otherwise proceed to login/sigup
+
+          
+        }
+
 
   return (
     <div >
@@ -38,6 +45,7 @@ const Login = () => {
         </h1>
 
         {!isSignInForm &&<input
+         ref={name}
          type='text'
          placeholder='Full Name' 
          className='p-2 my-4 w-full bg-gray-500'
@@ -56,6 +64,9 @@ const Login = () => {
          placeholder='Password' 
          className='p-2 my-4 w-full  bg-gray-500'
         />  
+        <p className="text-red-500 font-bold text-lg py-2">
+          {errorMessage}
+        </p>
 
         <button className='p-4 my-6 bg-red-700 w-full rounded-lg' onClick={handleButtonClick}>
          {isSignInForm ? "Sign In" : "Sign Up"}
