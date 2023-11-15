@@ -1,13 +1,26 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import Header from './Header';
+import { checkValidData } from '../utils/validate';
 
 const Login = () => {
 
     const [isSignInForm , setIsSignInForm] = useState(true);
 
+    const email = useRef(null);
+    const password = useRef(null);
+    
+
     const toglleSignInForm = ()=>{
           setIsSignInForm(!isSignInForm); //toggle true/false
     }
+
+    const handleButtonClick = ()=>{
+          //validate the form data
+          checkValidData(email,password)
+          console.log(email);
+          console.log(password);
+    }
+
   return (
     <div >
       <Header/>
@@ -17,30 +30,34 @@ const Login = () => {
       alt='backgroud-image'
       />
       </div>
-      <form className='w-3/12 absolute  p-12 bg-black my-36 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80'>
+      <form 
+        onSubmit={(e)=>e.preventDefault()}
+        className='w-3/12 absolute  p-12 bg-black my-36 mx-auto right-0 left-0 text-white rounded-lg bg-opacity-80'>
         <h1 className='font-bold text-3xl py-4'>
           {isSignInForm ? "Sign In" : "Sign Up"}
         </h1>
-       
-        <input
-         type='text'
-         placeholder='Email Address' 
-         className='p-2 my-4 w-full bg-gray-500'
-        />
 
         {!isSignInForm &&<input
          type='text'
          placeholder='Full Name' 
          className='p-2 my-4 w-full bg-gray-500'
         />}
+       
+        <input
+         ref={email}
+         type='text'
+         placeholder='Email Address' 
+         className='p-2 my-4 w-full bg-gray-500'
+        />       
 
         <input 
+         ref={password}
          type='password'
          placeholder='Password' 
          className='p-2 my-4 w-full  bg-gray-500'
         />  
 
-        <button className='p-4 my-6 bg-red-700 w-full rounded-lg'>
+        <button className='p-4 my-6 bg-red-700 w-full rounded-lg' onClick={handleButtonClick}>
          {isSignInForm ? "Sign In" : "Sign Up"}
         </button>      
         <p className='py-4 cursor-pointer' onClick={toglleSignInForm}>

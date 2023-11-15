@@ -3,6 +3,15 @@
 #form handeling
 #chatgpt for suggestion
 
+#To-do
+-Create React App
+-Configured TailwindCSS
+-Header
+-Routing of App
+-Login Form
+-Sign_up Form
+-Form Validation
+-useRef Hook
 
 #Features
 -Login/Sign_Up
