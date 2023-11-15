@@ -16,10 +16,10 @@ const Login = () => {
 
     const handleButtonClick = ()=>{
           //validate the form data
-          checkValidData(email,password)
-          console.log(email);
-          console.log(password);
-    }
+          //
+          // console.log(email.current.value);
+          // console.log(password.current.value);
+          const message = checkValidData(email.current.value, password.current.value);    }
 
   return (
     <div >
